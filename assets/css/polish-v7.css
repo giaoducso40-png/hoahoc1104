@@ -168,3 +168,205 @@
 @keyframes mqNaturalFlame{from{transform:scale(.96,.91) skewX(-2deg)}to{transform:scale(1.03,1.06) skewX(2deg)}}
 @keyframes mqNaturalBubble{0%{transform:translateY(9px);opacity:0}20%{opacity:1}100%{transform:translateY(-22px);opacity:0}}
 @keyframes mqFlocDrift{to{transform:translateY(5px) translateX(2px)}}
+
+/* V12 mobile — một luồng duy nhất: chọn lab → quan sát → đọc và thao tác. */
+@media(max-width:600px){
+ body{padding-bottom:82px;overflow-x:hidden}
+ #viewRoot{padding:12px 10px 28px}
+ .lab-page-title{margin-bottom:8px}
+ .lab-page-title .eyebrow{margin-bottom:3px;font-size:.66rem}
+ .lab-page-title h1{font-size:1.25rem;line-height:1.22}
+ .lab-page-title>div>p:last-child,.lab-page-title>.pill{display:none}
+ .lab-layout{display:block;min-width:0}
+
+ .lab-list{
+  display:flex!important;
+  gap:7px;
+  margin:0 0 8px;
+  padding:6px;
+  overflow-x:auto!important;
+  overflow-y:hidden;
+  scroll-snap-type:x proximity;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+ }
+ .lab-list::-webkit-scrollbar{display:none}
+ .lab-list button{
+  flex:0 0 154px;
+  width:154px;
+  min-width:154px!important;
+  min-height:48px;
+  padding:7px 8px;
+  scroll-snap-align:start;
+ }
+ .lab-list button b{flex:0 0 34px;width:34px;height:34px}
+ .lab-list button span{font-size:.72rem;line-height:1.22;overflow-wrap:normal;word-break:normal}
+
+ .lab-card{border-radius:18px;overflow:hidden}
+ .lab-head{display:block;padding:11px 12px 10px}
+ .lab-head h2{margin:5px 0 7px;font-size:1.12rem;line-height:1.22}
+ .lab-objective{margin:0;font-size:.76rem;line-height:1.42}
+ .lab-warning{margin-top:8px;padding:8px 9px;font-size:.72rem;line-height:1.38}
+
+ .lab-workspace{display:flex!important;flex-direction:column!important;height:auto!important;max-height:none!important}
+ .lab-stage{order:1!important;width:100%;min-height:320px!important;height:320px;overflow:hidden}
+ .lab-guide{order:2!important;width:100%;min-height:0!important;height:auto;padding:13px 12px 12px;overflow:visible!important}
+ .lab-guide-content{min-height:0}
+ .lab-guide h3{font-size:1.05rem;line-height:1.28;margin:3px 0 6px}
+ .lab-guide p,.lab-instruction,.lab-observation p{font-size:.8rem;line-height:1.45;text-align:left}
+ .lab-observation{margin:7px 0 10px;padding:9px 10px}
+ .lab-stepper{margin-bottom:10px}
+ .prediction{margin:9px 0}
+ .prediction label{padding:9px;font-size:.78rem;line-height:1.35}
+ .lab-equation{font-size:.82rem;padding:9px;overflow-x:auto}
+ .lab-controls{position:static;display:grid;grid-template-columns:minmax(88px,.34fr) minmax(0,1fr);gap:7px;margin-top:12px;padding-top:0;background:none}
+ .lab-controls button{min-width:0;min-height:48px;padding:9px 10px;font-size:.82rem;line-height:1.25;white-space:normal;overflow-wrap:normal;word-break:normal}
+
+ .lab-scene,.lab-scene .mq-diagram{max-width:100%;overflow:hidden}
+ .lab-scene .mq-diagram{inset:3% 0 2%;width:100%;height:95%}
+ .scene-esterification.phase-ester-two-layers .receiver-tube{transform:translate(-180px,2px) scale(1.34)}
+ .scene-esterification.phase-ester-two-layers .receiver-top-name,
+ .scene-esterification.phase-ester-two-layers .receiver-bottom-name{font-size:14px}
+
+ .lab-card h1,.lab-card h2,.lab-card h3,.lab-card p,.lab-card li,
+ .lab-objective,.lab-warning{overflow-wrap:normal;word-break:normal;text-wrap:wrap}
+ .mobile-nav{bottom:max(8px,env(safe-area-inset-bottom));left:8px;right:8px}
+ .toast{top:76px;bottom:auto;width:calc(100% - 28px);max-width:430px;padding:11px 14px;font-size:.82rem;line-height:1.35;transform:translate(-50%,-12px)}
+ .toast.show{transform:translate(-50%,0)}
+}
+
+@media(max-width:360px){
+ #viewRoot{padding-inline:7px}
+ .lab-list button{flex-basis:146px;width:146px;min-width:146px!important}
+ .lab-stage{min-height:294px!important;height:294px}
+ .lab-controls{grid-template-columns:82px minmax(0,1fr)}
+}
+
+/* V18 — Lab 6 only: realistic ester preparation and clear phase separation. */
+.scene-esterification::before,
+.scene-esterification::after{
+ content:none;
+ display:none;
+ position:absolute;
+ z-index:28;
+ box-sizing:border-box;
+ padding:7px 11px;
+ border:1px solid rgba(20,112,94,.2);
+ border-radius:10px;
+ background:rgba(255,255,255,.94);
+ box-shadow:0 7px 18px rgba(25,72,63,.12);
+ color:#195f50;
+ font:800 12px/1.3 "Segoe UI","Noto Sans","DejaVu Sans",Arial,sans-serif;
+ white-space:nowrap;
+ width:auto;
+ height:auto;
+ min-width:0;
+ left:auto;
+ right:auto;
+ top:auto;
+ bottom:auto;
+ transform:none;
+ opacity:1;
+ animation:none;
+ pointer-events:none;
+}
+
+.scene-esterification.phase-ester-mixing::before{
+ content:"Hỗn hợp gần như không màu";
+ display:block;
+ top:12px;
+ left:12px;
+}
+
+.scene-esterification.phase-ester-water-bath::before{
+ content:"Chỉ đun bể nước · không hơ trực tiếp ống nghiệm";
+ display:block;
+ top:12px;
+ left:12px;
+}
+
+.scene-esterification.phase-ester-brine-transfer::before{
+ content:"Đèn đã tắt · mẫu đã để nguội";
+ display:block;
+ top:12px;
+ left:12px;
+}
+
+/* Hạ và thu nhỏ đèn để ngọn lửa nằm dưới kiềng, tách khỏi chân giá và đáy bể. */
+.scene-esterification .ester-alcohol-lamp{
+ transform:translate(-82px,12px) scale(.58);
+ transform-origin:370px 411px;
+}
+.scene-esterification.phase-ester-water-bath .trivet path{stroke-dasharray:none}
+
+/* Dòng rót là một dòng chất lỏng liên tục, không mô phỏng bằng các đoạn khí. */
+.scene-esterification.phase-ester-brine-transfer .pour-stream{
+ stroke:#86b9ae;
+ stroke-width:6;
+ stroke-dasharray:none;
+ filter:drop-shadow(0 1px 2px rgba(54,124,109,.24));
+}
+.scene-esterification.phase-ester-brine-transfer .receiver-organic{fill:rgba(239,243,226,.55)}
+
+/* Ở kết quả cuối, chỉ giữ ống nhận và đưa chú thích ra ngoài dụng cụ. */
+.scene-esterification.phase-ester-two-layers .receiver-top-name,
+.scene-esterification.phase-ester-two-layers .receiver-bottom-name,
+.scene-esterification.phase-ester-two-layers .receiver-top-leader,
+.scene-esterification.phase-ester-two-layers .receiver-bottom-leader{display:none}
+.scene-esterification.phase-ester-two-layers .receiver-organic{
+ fill:rgba(246,246,226,.94);
+ stroke:rgba(137,134,87,.3);
+}
+.scene-esterification.phase-ester-two-layers .receiver-brine{
+ fill:rgba(190,226,226,.9);
+ stroke:rgba(61,129,126,.25);
+}
+.scene-esterification.phase-ester-two-layers .receiver-interface{
+ stroke:#29796d!important;
+ stroke-width:4!important;
+}
+.scene-esterification.phase-ester-two-layers::before,
+.scene-esterification.phase-ester-two-layers::after{
+ display:block;
+ left:8%;
+ right:auto;
+ min-width:190px;
+ text-align:left;
+}
+.scene-esterification.phase-ester-two-layers::before{
+ content:"Pha hữu cơ ở trên · ethyl ethanoate";
+ top:45%;
+ border-left:5px solid #d7d59b;
+}
+.scene-esterification.phase-ester-two-layers::after{
+ content:"Pha nước muối ở dưới";
+ top:61%;
+ border-left:5px solid #78bdb9;
+}
+
+@media(max-width:600px){
+ .scene-esterification::before,
+ .scene-esterification::after{
+  padding:5px 8px;
+  font-size:10px;
+ }
+ .scene-esterification.phase-ester-mixing::before,
+ .scene-esterification.phase-ester-water-bath::before,
+ .scene-esterification.phase-ester-brine-transfer::before{
+  display:none;
+ }
+ .scene-esterification.phase-ester-two-layers .receiver-tube{
+  transform:translate(-80px,6px) scale(1.2);
+ }
+ .scene-esterification.phase-ester-two-layers::before,
+ .scene-esterification.phase-ester-two-layers::after{
+  left:8px;
+  min-width:0;
+  width:198px;
+  font-size:9px;
+  white-space:nowrap;
+  transform:none;
+ }
+ .scene-esterification.phase-ester-two-layers::before{top:45%}
+ .scene-esterification.phase-ester-two-layers::after{top:62%}
+}
