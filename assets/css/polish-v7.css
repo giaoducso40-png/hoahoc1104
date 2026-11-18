@@ -1,0 +1,74 @@
+/* V7: lớp hiệu chỉnh cuối — chỉ cho bản đồ, bảng chọn trạm và các cảnh lab. */
+
+/* Robot xuất phát ở tâm quảng trường; vị trí đích vẫn do city.js tính theo trạm. */
+.city-v4 .map-runner{left:var(--runner-x,50%);top:var(--runner-y,52%)}
+
+/* Không dùng cân dòng tự động: chỉ xuống dòng tự nhiên theo chiều rộng thật. */
+.lab-card h1,.lab-card h2,.lab-card h3,.lab-card p,.lab-card li,
+.station-action b,.station-action small{word-break:normal;overflow-wrap:break-word;text-wrap:wrap}
+.lab-instruction,.lab-observation p,.lab-objective,.lab-warning{text-align:left}
+.lab-equation{overflow:visible}
+.lab-equation .equation-line{white-space:normal;overflow-wrap:normal;word-break:normal;text-wrap:wrap}
+
+/* Ba tiểu cảnh “magic” có chiều sâu, nhưng vẫn nhẹ và không làm tăng tệp ảnh. */
+.station-action .action-art{position:relative;overflow:hidden;isolation:isolate}
+.station-action .action-art::before{content:"";position:absolute;inset:7px;border-radius:17px;background:radial-gradient(circle at 35% 25%,#fff 0 8%,transparent 30%),linear-gradient(145deg,color-mix(in srgb,var(--station-soft),white 32%),transparent);z-index:-1}
+.station-action .action-art svg{width:58px;height:58px}
+.station-action .magic-halo{fill:color-mix(in srgb,var(--station),transparent 78%)!important;stroke:none!important}
+.station-action .magic-book,.station-action .magic-flask,.station-action .magic-robot{fill:rgba(255,255,255,.72);stroke:var(--station)}
+.station-action .magic-page,.station-action .magic-route,.station-action .magic-flag,.station-action .magic-rim{fill:none;stroke:var(--station)}
+.station-action .magic-liquid{fill:color-mix(in srgb,var(--station),white 68%);stroke:var(--station)}
+.station-action .magic-eye,.station-action .magic-antenna,.station-action .magic-molecule circle,.station-action .magic-bubbles circle{fill:color-mix(in srgb,var(--station),white 34%)!important;stroke:#fff;stroke-width:2}
+.station-action .magic-spark{fill:none;stroke:#f2a33c;stroke-width:3}
+.station-action:hover .magic-molecule{animation:mqMagicFloat 1.2s ease-in-out infinite alternate}
+.station-action:hover .magic-bubbles circle{animation:mqMagicBubble 1.25s ease-in-out infinite}
+.station-action:hover .magic-bubbles circle:nth-child(2n){animation-delay:-.55s}
+.station-action:hover .magic-robot{animation:mqMagicRobot .65s ease-in-out infinite alternate}
+.station-action:hover .magic-spark{animation:mqMagicSpark .75s ease-in-out infinite alternate}
+@keyframes mqMagicFloat{to{transform:translateY(-4px)}}
+@keyframes mqMagicBubble{50%{transform:translateY(-5px);opacity:.45}}
+@keyframes mqMagicRobot{to{transform:translateY(-2px)}}
+@keyframes mqMagicSpark{to{opacity:.35;transform:scale(.78);transform-origin:center}}
+
+/* Thẻ quan sát không che dụng cụ; sơ đồ giữ khoảng thở ở đầu và cuối cảnh. */
+.lab-scene .scene-focus{top:10px;right:10px;max-width:min(43%,250px)}
+.lab-scene .mq-diagram{inset:7% 2% 14%;width:96%;height:79%}
+.lab-scene .scene-caption{max-width:calc(100% - 24px);white-space:normal}
+
+/* Lab 4: hai ống cùng bể ấm, chỉ thành trong ống A có bạc. */
+.scene-tollens .tollens-droppers{transition:opacity .3s ease}
+.scene-tollens.phase-silver-growing .tollens-droppers,
+.scene-tollens.phase-silver-complete .tollens-droppers{opacity:0}
+.scene-tollens.phase-silver-growing .warm-bath,
+.scene-tollens.phase-silver-complete .warm-bath{filter:drop-shadow(0 5px 7px rgba(72,134,145,.18))}
+.scene-tollens.phase-silver-growing .silver-seeds{filter:drop-shadow(0 0 5px #fff)}
+.scene-tollens.phase-silver-complete .tube-a{filter:drop-shadow(0 0 8px rgba(145,166,174,.45))}
+
+/* Lab 5: thìa tới đúng miệng bình; hạt và bọt đi theo một trục dễ quan sát. */
+.scene-carbonate.phase-powder-contact .spoon-svg{transform:translate(170px,-8px) rotate(16deg)!important}
+.scene-carbonate.phase-co2-strong .spoon-svg,
+.scene-carbonate.phase-co2-fading .spoon-svg{transform:translate(335px,-16px)!important;opacity:0}
+.scene-carbonate .falling-powder,.scene-carbonate .co2-bubbles{filter:drop-shadow(0 0 3px rgba(31,139,119,.28))}
+.scene-carbonate.phase-co2-strong .co2-text{filter:drop-shadow(0 2px 2px #fff)}
+
+/* Lab 6: ba cảnh tách biệt, không phóng quá cỡ và không cắt nhãn pha. */
+.scene-esterification.phase-ester-brine-transfer .receiver-tube{transform:translate(-8px,5px) scale(.93);transform-origin:586px 235px}
+.scene-esterification.phase-ester-brine-transfer .ester-tube{transform:translate(105px,-48px) rotate(31deg)!important}
+.scene-esterification.phase-ester-two-layers .receiver-tube{transform:translate(-178px,-3px) scale(1.13);transform-origin:586px 235px;filter:drop-shadow(0 9px 8px rgba(34,80,70,.2))}
+.scene-esterification.phase-ester-two-layers .receiver-title{transform:translate(-28px,-8px)}
+.scene-esterification.phase-ester-two-layers .receiver-top-name,
+.scene-esterification.phase-ester-two-layers .receiver-bottom-name{font-size:14px}
+
+@media(max-width:820px){
+ .station-action .action-art svg{width:48px;height:48px}
+ .lab-scene .scene-focus{left:8px;right:8px;top:46px;max-width:none;padding:6px 9px}
+ .lab-scene .mq-diagram{inset:22% 0 14%;width:100%;height:64%}
+ .scene-esterification.phase-ester-two-layers .receiver-tube{transform:translate(-174px,2px) scale(1.18)}
+ .scene-esterification.phase-ester-two-layers .receiver-top-name,
+ .scene-esterification.phase-ester-two-layers .receiver-bottom-name{font-size:13px}
+}
+
+@media(prefers-reduced-motion:reduce){
+ .station-action .magic-molecule,.station-action .magic-bubbles circle,
+ .station-action .magic-robot,.station-action .magic-spark{animation:none!important}
+}
