@@ -30,10 +30,10 @@
 @keyframes mqMagicRobot{to{transform:translateY(-2px)}}
 @keyframes mqMagicSpark{to{opacity:.35;transform:scale(.78);transform-origin:center}}
 
-/* Thẻ quan sát không che dụng cụ; sơ đồ giữ khoảng thở ở đầu và cuối cảnh. */
-.lab-scene .scene-focus{top:10px;right:10px;max-width:min(43%,250px)}
-.lab-scene .mq-diagram{inset:7% 2% 14%;width:96%;height:79%}
-.lab-scene .scene-caption{max-width:calc(100% - 24px);white-space:normal}
+/* Sân khấu chỉ dành cho thí nghiệm. Nội dung quan sát đã có đầy đủ ở cột hướng dẫn. */
+.lab-scene .scene-focus,.lab-scene .scene-caption{display:none!important}
+.lab-stage .bench-label{display:none!important}
+.lab-scene .mq-diagram{inset:4% 2% 3%;width:96%;height:93%}
 
 /* Lab 4: hai ống cùng bể ấm, chỉ thành trong ống A có bạc. */
 .scene-tollens .tollens-droppers{transition:opacity .3s ease}
@@ -54,21 +54,17 @@
 /* Lab 6: ba cảnh tách biệt, không phóng quá cỡ và không cắt nhãn pha. */
 .scene-esterification.phase-ester-brine-transfer .receiver-tube{transform:translate(-8px,5px) scale(.93);transform-origin:586px 235px}
 .scene-esterification.phase-ester-brine-transfer .ester-tube{transform:translate(105px,-48px) rotate(31deg)!important}
-.scene-esterification.phase-ester-two-layers .receiver-tube{transform:translate(-178px,-3px) scale(1.13);transform-origin:586px 235px;filter:drop-shadow(0 9px 8px rgba(34,80,70,.2))}
+.scene-esterification.phase-ester-two-layers .receiver-tube{transform:translate(-188px,-3px) scale(1.34);transform-origin:586px 235px;filter:drop-shadow(0 9px 8px rgba(34,80,70,.2))}
 .scene-esterification.phase-ester-two-layers .receiver-title{transform:translate(-28px,-8px)}
 .scene-esterification.phase-ester-two-layers .receiver-top-name,
 .scene-esterification.phase-ester-two-layers .receiver-bottom-name{font-size:14px}
 
 @media(max-width:820px){
  .station-action .action-art svg{width:48px;height:48px}
- .lab-scene .scene-focus{left:8px;right:8px;top:46px;max-width:none;padding:6px 9px}
- .lab-scene .mq-diagram{inset:22% 0 14%;width:100%;height:64%}
- .scene-esterification.phase-ester-two-layers .receiver-tube{transform:translate(-174px,2px) scale(1.18)}
+ .lab-scene .mq-diagram{inset:7% 0 3%;width:100%;height:90%}
+ .scene-esterification.phase-ester-two-layers .receiver-tube{transform:translate(-192px,2px) scale(1.52)}
  .scene-esterification.phase-ester-two-layers .receiver-top-name,
- .scene-esterification.phase-ester-two-layers .receiver-bottom-name{font-size:13px}
- /* Dòng quan sát đã có ở bảng hướng dẫn; ẩn bản sao trong sân khấu để không che dụng cụ. */
- .lab-scene .scene-caption{display:none}
- .lab-scene .mq-diagram{inset:22% 0 5%;height:73%}
+ .scene-esterification.phase-ester-two-layers .receiver-bottom-name{font-size:15px}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -99,6 +95,7 @@
 .scene-cuo .wire-heating .wire-black,.scene-cuo .wire-black-loop,
 .scene-cuo .immersed-black{stroke:#252a28!important;stroke-width:8!important;fill:none}
 .scene-cuo .wire-loop{stroke-linecap:round}
+.scene-cuo .wire-heating .wire-loop{transform:translateX(16px)}
 .scene-cuo.phase-black-cuo .wire-heating,
 .scene-cuo.phase-immersed-cuo .wire-immersed,
 .scene-cuo.phase-copper-restored .wire-immersed{filter:drop-shadow(0 2px 2px rgba(63,43,33,.18))}
@@ -140,7 +137,26 @@
 .scene-esterification .ester-alcohol-lamp .lamp-highlight{fill:none!important;stroke:rgba(255,255,255,.86)!important;stroke-width:3!important}
 .scene-esterification .ester-alcohol-lamp .flame-inner{fill:#fff2a1!important;stroke:none!important}
 .scene-esterification .ester-alcohol-lamp .lamp-flame{transform-origin:370px 315px}
-.scene-esterification .ester-alcohol-lamp{transform:translateY(-28px)}
+.scene-esterification .ester-alcohol-lamp{
+ transform:translate(-82px,0) scale(.65);
+ transform-origin:370px 411px;
+}
+.scene-esterification .heat-waves{display:none!important}
+.scene-esterification.phase-ester-water-bath .trivet path{
+ stroke-dasharray:50 56 214 1000;
+}
+.scene-esterification>.mq-diagram .chemical-label{display:none}
+/* Nâng cụm gia nhiệt để đèn nằm trọn dưới kệ, không cắt qua chân/đáy bể. */
+.scene-esterification:not(.phase-ester-brine-transfer):not(.phase-ester-two-layers) .ester-bath,
+.scene-esterification:not(.phase-ester-brine-transfer):not(.phase-ester-two-layers) .trivet,
+.scene-esterification:not(.phase-ester-brine-transfer):not(.phase-ester-two-layers) .ester-tube{transform:translateY(-20px)}
+/* Khi đã tắt đèn và chuyển mẫu, bỏ hoàn toàn bộ gia nhiệt cũ khỏi cảnh. */
+.scene-esterification.phase-ester-brine-transfer .ester-stand,
+.scene-esterification.phase-ester-brine-transfer .ester-clamp,
+.scene-esterification.phase-ester-brine-transfer .ester-bath,
+.scene-esterification.phase-ester-brine-transfer .trivet,
+.scene-esterification.phase-ester-brine-transfer .ester-alcohol-lamp,
+.scene-esterification.phase-ester-brine-transfer .heat-waves{opacity:0!important}
 .scene-esterification.phase-ester-water-bath .ester-alcohol-lamp .lamp-flame,
 .scene-esterification.phase-ester-water-bath .ester-alcohol-lamp .flame-inner{opacity:1;animation:mqNaturalFlame .58s ease-in-out infinite alternate}
 .scene-esterification .ester-alcohol-lamp .flame-inner{opacity:0}
