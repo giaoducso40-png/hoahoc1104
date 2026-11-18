@@ -66,9 +66,89 @@
  .scene-esterification.phase-ester-two-layers .receiver-tube{transform:translate(-174px,2px) scale(1.18)}
  .scene-esterification.phase-ester-two-layers .receiver-top-name,
  .scene-esterification.phase-ester-two-layers .receiver-bottom-name{font-size:13px}
+ /* Dòng quan sát đã có ở bảng hướng dẫn; ẩn bản sao trong sân khấu để không che dụng cụ. */
+ .lab-scene .scene-caption{display:none}
+ .lab-scene .mq-diagram{inset:22% 0 5%;height:73%}
 }
 
 @media(prefers-reduced-motion:reduce){
  .station-action .magic-molecule,.station-action .magic-bubbles circle,
  .station-action .magic-robot,.station-action .magic-spark{animation:none!important}
 }
+
+/* V8 — dụng cụ có tỉ lệ gần thực tế hơn, kính có phản sáng và nét không còn thô. */
+.mq-diagram .glass{stroke:#789c98;stroke-width:5;fill:url(#esterGlass,rgba(245,255,253,.28));stroke-linecap:round;stroke-linejoin:round}
+.scene-cuo .glass{fill:url(#cuoGlass,rgba(245,255,253,.28))}
+.mq-diagram .glass-highlight{fill:none;stroke:rgba(255,255,255,.88);stroke-width:4;stroke-linecap:round;pointer-events:none}
+.mq-diagram .stand{stroke:#777098;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.mq-diagram .clamp{fill:#a9a2c4;stroke:#716990;stroke-width:4}
+.mq-diagram .lamp-shadow{fill:rgba(23,58,51,.16);stroke:none}
+.mq-diagram .lamp-glass{fill:rgba(230,246,243,.62);stroke:#607e7b;stroke-width:4;stroke-linejoin:round}
+.mq-diagram .lamp-fuel{fill:url(#esterFuel,#77bdb2);stroke:none;opacity:.68}
+.scene-cuo .lamp-fuel{fill:url(#cuoFuel,#77bdb2)}
+.mq-diagram .lamp-cap{fill:#8d9c98;stroke:#53635f;stroke-width:3;stroke-linejoin:round}
+.mq-diagram .wick-svg,.mq-diagram .lamp-wick{fill:none;stroke:#2f3532;stroke-width:5;stroke-linecap:round}
+.mq-diagram .flame-outer{fill:url(#cuoFlame,#ff9c3e);stroke:#ee6d2f;stroke-width:2.5;filter:drop-shadow(0 0 6px rgba(246,133,51,.48))}
+.scene-esterification .flame-outer{fill:#ffac48}
+.mq-diagram .flame-inner{fill:#fff2a1;stroke:none;opacity:.95}
+.mq-diagram .lamp-highlight{fill:none;stroke:rgba(255,255,255,.86);stroke-width:3;stroke-linecap:round}
+
+/* Lab 2: dây đồng mảnh, có tiết diện hợp lý; vòng dây nằm ngay trên ngọn lửa. */
+.scene-cuo .wire-heating .wire-copper,.scene-cuo .wire-copper-loop,
+.scene-cuo .immersed-copper{stroke:#b9683e!important;stroke-width:7!important;fill:none}
+.scene-cuo .wire-heating .wire-black,.scene-cuo .wire-black-loop,
+.scene-cuo .immersed-black{stroke:#252a28!important;stroke-width:8!important;fill:none}
+.scene-cuo .wire-loop{stroke-linecap:round}
+.scene-cuo.phase-black-cuo .wire-heating,
+.scene-cuo.phase-immersed-cuo .wire-immersed,
+.scene-cuo.phase-copper-restored .wire-immersed{filter:drop-shadow(0 2px 2px rgba(63,43,33,.18))}
+.scene-cuo .burner .flame-svg,.scene-cuo .burner .flame-inner{transform-origin:286px 241px}
+.scene-cuo .burner .flame-inner{opacity:0}
+.scene-cuo.phase-black-cuo .burner .flame-svg,.scene-cuo.phase-black-cuo .burner .flame-inner{opacity:1;animation:mqNaturalFlame .55s ease-in-out infinite alternate}
+.scene-cuo .burner .lamp-glass{fill:rgba(230,246,243,.62)!important;stroke:#607e7b!important;stroke-width:4!important}
+.scene-cuo .burner .lamp-fuel{fill:url(#cuoFuel,#77bdb2)!important;stroke:none!important}
+.scene-cuo .burner .lamp-cap{fill:#8d9c98!important;stroke:#53635f!important;stroke-width:3!important}
+.scene-cuo .burner .lamp-highlight{fill:none!important;stroke:rgba(255,255,255,.86)!important;stroke-width:3!important}
+.scene-cuo .burner .flame-inner{fill:#fff2a1!important;stroke:none!important}
+
+/* Lab 3: kết tủa là các bông trắng nhỏ lắng xuống, không phải một mảng đặc. */
+.scene-phenol-bromine .precipitate path{fill:rgba(251,252,246,.92);stroke:#aab5b0;stroke-width:1.3;filter:drop-shadow(0 2px 2px rgba(62,79,72,.18))}
+.scene-phenol-bromine.phase-precipitate-growing .precipitate{animation:mqFlocDrift 1.7s ease-in-out infinite alternate}
+.scene-phenol-bromine .bromine-drop{filter:drop-shadow(0 2px 2px rgba(142,75,22,.22))}
+.scene-phenol-bromine .phenol-liquid{stroke:#8fb5ae;stroke-width:2}
+
+/* Lab 4: gương bạc là màng phản quang mỏng bám thành, không phải thanh xám đặc. */
+.scene-tollens .silver-wall,.scene-tollens .silver-bottom{stroke:#aebdc2!important;stroke-width:7!important;filter:drop-shadow(0 0 3px #fff) drop-shadow(0 1px 2px rgba(62,82,89,.35))}
+.scene-tollens.phase-silver-complete .silver-wall,.scene-tollens.phase-silver-complete .silver-bottom{stroke:#91a6ae!important}
+.scene-tollens .sample-liquid{stroke:#a2c4bf;stroke-width:2}
+.scene-tollens .warm-wave{stroke:#e69a54;stroke-width:3;fill:none;stroke-linecap:round}
+
+/* Lab 5: hạt bột nhỏ, bọt khí nhiều kích thước và đi lên từ vùng tiếp xúc. */
+.scene-carbonate .acid-flask-svg>.glass{stroke-width:5}
+.scene-carbonate .powder circle,.scene-carbonate .falling-powder circle{fill:#f3f1df;stroke:#b9b7a7;stroke-width:1}
+.scene-carbonate .contact-foam circle,.scene-carbonate .co2-bubbles circle{fill:rgba(248,255,253,.6);stroke:#4a9d90;stroke-width:2!important}
+.scene-carbonate.phase-co2-strong .co2-bubbles circle{animation:mqNaturalBubble 1.55s cubic-bezier(.2,.7,.4,1) infinite}
+.scene-carbonate.phase-co2-strong .co2-bubbles circle:nth-child(2n){animation-delay:-.55s}
+.scene-carbonate.phase-co2-strong .co2-bubbles circle:nth-child(3n){animation-delay:-1.05s}
+
+/* Lab 6: đèn cồn thủy tinh có nhiên liệu, nắp kim loại, tim đèn và hai lớp ngọn lửa. */
+.scene-esterification .ester-alcohol-lamp .lamp-body,
+.scene-esterification .ester-alcohol-lamp .lamp-neck{fill:initial;stroke:initial}
+.scene-esterification .ester-alcohol-lamp .lamp-glass{fill:rgba(230,246,243,.62)!important;stroke:#607e7b!important;stroke-width:4!important}
+.scene-esterification .ester-alcohol-lamp .lamp-fuel{fill:url(#esterFuel,#77bdb2)!important;stroke:none!important}
+.scene-esterification .ester-alcohol-lamp .lamp-cap{fill:#8d9c98!important;stroke:#53635f!important;stroke-width:3!important}
+.scene-esterification .ester-alcohol-lamp .lamp-highlight{fill:none!important;stroke:rgba(255,255,255,.86)!important;stroke-width:3!important}
+.scene-esterification .ester-alcohol-lamp .flame-inner{fill:#fff2a1!important;stroke:none!important}
+.scene-esterification .ester-alcohol-lamp .lamp-flame{transform-origin:370px 315px}
+.scene-esterification .ester-alcohol-lamp{transform:translateY(-28px)}
+.scene-esterification.phase-ester-water-bath .ester-alcohol-lamp .lamp-flame,
+.scene-esterification.phase-ester-water-bath .ester-alcohol-lamp .flame-inner{opacity:1;animation:mqNaturalFlame .58s ease-in-out infinite alternate}
+.scene-esterification .ester-alcohol-lamp .flame-inner{opacity:0}
+.scene-esterification.phase-ester-brine-transfer .ester-alcohol-lamp .flame-inner,
+.scene-esterification.phase-ester-two-layers .ester-alcohol-lamp .flame-inner{opacity:0}
+.scene-esterification .ester-mixture{fill:rgba(232,242,226,.58);stroke:#a8bda8;stroke-width:1.5}
+.scene-esterification .receiver-interface{stroke:#397f75!important;stroke-width:3!important}
+
+@keyframes mqNaturalFlame{from{transform:scale(.96,.91) skewX(-2deg)}to{transform:scale(1.03,1.06) skewX(2deg)}}
+@keyframes mqNaturalBubble{0%{transform:translateY(9px);opacity:0}20%{opacity:1}100%{transform:translateY(-22px);opacity:0}}
+@keyframes mqFlocDrift{to{transform:translateY(5px) translateX(2px)}}
